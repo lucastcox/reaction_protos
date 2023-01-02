@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+message DeviceInfo {
+  enum DEVICE_TYPE {
+    Main             = 0;
+    Coprocessor      = 1;
+  }
+
+  enum BOARD_REV {
+    Rev1 = 0;
+    Rev2 = 1;
+  }
+
+   string      bootloaderVersion = 1;  //maaaaybe applicable for coprocessor?
+   string      firmwareVersion   = 2;  
+   string      idfVersion        = 3;  //not applicable for coprocessor
+   string      macAddress        = 4;  //not applicable for coprocessor
+   BOARD_REV   boardRevision     = 5;  
+   string      bankId            = 6;  //not applicable for coprocessor
+   DEVICE_TYPE deviceType        = 7;
+}

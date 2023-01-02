@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+message Reaction {
+  enum MESSAGE_TYPE {
+    Query   = 0;
+    Command = 1;
+    Update  = 2;
+  }
+  
+  enum QUERY_TYPE {
+    Unset        = 0;
+    DeviceInfo   = 1;
+  }
+
+    MESSAGE_TYPE type           = 1;
+    QUERY_TYPE   queryType      = 2;
+    uint32       sequenceNumber = 3; //potentially unused
+
+}
