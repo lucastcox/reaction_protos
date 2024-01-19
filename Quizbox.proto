@@ -1,0 +1,48 @@
+syntax = "proto3";
+
+enum Type {
+  TIMER_EXPIRED = 0;
+  QUIZZER_ACTION = 1;
+  BUTTON_ACTION = 2;
+  TIMER_STARTED = 3;
+  TIMER_CLEARED = 4;
+  QUIZZER_CLEARED = 5;
+  QUIZZER_DISPLAYED = 6;
+  QUIZZER_ACTIVE = 7;
+  END = 8;
+}
+
+enum ButtonID {
+  RED_4 = 0;
+  RED_3 = 1;
+  RED_2 = 2;
+  RED_1 = 3;
+  GREEN_1 = 4;
+  GREEN_2 = 5;
+  GREEN_3 = 6;
+  GREEN_4 = 7;
+  TIMER_530 = 8;
+  TIMER_RESET = 9;
+  QUIZZER_RESET = 10;
+  TIMER_60 = 11;
+  TIMER_120 = 12;
+  CONTEST = 13;
+}
+
+message QuizzerEvent {
+  ButtonID quizzer_id = 1;
+  bool is_pressed = 2;
+}
+
+message ButtonEvent {
+  ButtonID button_id = 1;
+  bool is_pressed = 2;
+}
+
+message QuizzboxMessage {
+  Type type = 1;
+  oneof event_data {
+    QuizzerEvent quizzer_event = 2;
+    ButtonEvent button_event = 3;
+  }
+}
