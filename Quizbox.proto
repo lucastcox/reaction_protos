@@ -13,7 +13,8 @@ enum Type {
   QUIZZER_CLEARED   = 5;
   QUIZZER_DISPLAYED = 6;
   QUIZZER_ACTIVE    = 7;
-  END               = 8;
+  TIMER_COUNTDOWN   = 8;
+  END               = 9;
 }
 
 enum ButtonID {
@@ -44,12 +45,17 @@ message ButtonEvent {
   bool is_pressed = 2;
 }
 
+message TimerEvent {
+  int32 seconds_remaining = 1;
+}
+
 
 message EventMessage {
   Type type = 1;
   oneof event_data {
     QuizzerEvent quizzer_event = 2;
     ButtonEvent button_event = 3;
+    TimerEvent timer_event = 4;
   }
 }
 
