@@ -49,6 +49,10 @@ message TimerEvent {
   int32 seconds_remaining = 1;
 }
 
+message ActiveQuizzers {
+  bool is_active = 1;
+  repeated ButtonID active_quizzers = 2;
+}
 
 message EventMessage {
   Type type = 1;
@@ -56,6 +60,7 @@ message EventMessage {
     QuizzerEvent quizzer_event = 2;
     ButtonEvent button_event = 3;
     TimerEvent timer_event = 4;
+    ActiveQuizzers active_quizzers = 6;
   }
 }
 

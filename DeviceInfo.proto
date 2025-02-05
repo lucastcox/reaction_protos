@@ -4,6 +4,7 @@ message DeviceInfo {
   enum DEVICE_TYPE {
     Main             = 0;
     Coprocessor      = 1;
+    
   }
 
   enum BOARD_REV {
