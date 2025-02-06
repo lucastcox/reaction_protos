@@ -1,0 +1,7 @@
+*                            anonymous_oneof: true
+*                            long_names     : false
+DeviceInfo.bootloaderVersion max_length     : 32
+DeviceInfo.firmwareVersion   max_length     : 32
+DeviceInfo.macAddress        max_length     : 32
+DeviceInfo.idfVersion        max_length     : 32
+DeviceInfo.bankId            max_length     : 32
