@@ -14,7 +14,8 @@ enum Type {
   QUIZZER_DISPLAYED = 6;
   QUIZZER_ACTIVE    = 7;
   TIMER_COUNTDOWN   = 8;
-  END               = 9;
+  QUIZZERS_LIT_UP   = 9;
+  END               = 10;
 }
 
 enum ButtonID {
