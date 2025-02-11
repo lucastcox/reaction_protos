@@ -1,5 +1,5 @@
 syntax = "proto3";
-
+option csharp_namespace = "QuizboxUI.Protos";
 message DeviceInfo {
   enum DEVICE_TYPE {
     Main             = 0;
