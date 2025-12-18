@@ -1,5 +1,11 @@
 syntax = "proto3";
 
+import "Quizbox.proto";
+import "DeviceInfo.proto";
+import "FirmwareUpdate.proto";
+
+option csharp_namespace = "QuizboxUI.Protos";
+
 message Reaction {
   enum MESSAGE_TYPE {
     Query   = 0;
@@ -12,8 +18,14 @@ message Reaction {
     DeviceInfo   = 1;
   }
 
-    MESSAGE_TYPE type           = 1;
-    QUERY_TYPE   queryType      = 2;
-    uint32       sequenceNumber = 3; //potentially unused
+  MESSAGE_TYPE type           = 1;
+  QUERY_TYPE   queryType      = 2;
+  uint32       sequenceNumber = 3; //potentially unused
+  uint32       timestamp      = 4; //in milliseconds since wake
 
+  oneof message {
+    QuizboxMessage quizbox = 10;
+    DeviceInfo device_info = 11;
+    FirmwareUpdate firmware_update = 12;
+  }
 }

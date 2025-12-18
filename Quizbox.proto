@@ -63,6 +63,7 @@ message EventMessage {
     TimerEvent timer_event = 4;
     ActiveQuizzers active_quizzers = 6;
   }
+  uint64 timestamp_us = 5; // Milliseconds timestamp
 }
 
 message QuizboxMessage {

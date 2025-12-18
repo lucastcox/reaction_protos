@@ -1,0 +1,54 @@
+syntax = "proto3";
+
+option csharp_namespace = "QuizboxUI.Protos";
+
+message FirmwareUpdate {
+  enum COMMAND {
+    START    = 0;
+    DATA     = 1;
+    FINALIZE = 2;
+    ABORT    = 3;
+    STATUS   = 4;
+  }
+
+  enum STATE {
+    IDLE       = 0;
+    RECEIVING  = 1;
+    VALIDATING = 2;
+    COMPLETE   = 3;
+    ERROR      = 4;
+  }
+
+  enum RESULT {
+    SUCCESS                  = 0;
+    ERROR_INVALID_STATE      = 1;
+    ERROR_NO_MEMORY          = 2;
+    ERROR_INVALID_SIZE       = 3;
+    ERROR_WRITE_FAILED       = 4;
+    ERROR_VALIDATION_FAILED  = 5;
+    ERROR_INVALID_SIGNATURE  = 6;
+    ERROR_FLASH_FAILED       = 7;
+    ERROR_NO_UPDATE_PARTITION = 8;
+    ERROR_ALREADY_IN_PROGRESS = 9;
+    ERROR_BLOCK_OUT_OF_RANGE = 10;
+    ERROR_NOT_IN_PROGRESS    = 11;
+  }
+
+  COMMAND command = 1;
+
+  // For START command
+  uint32 total_size  = 2;
+  uint32 block_size  = 3;
+  bytes  sha256      = 4; // Optional 32-byte hash
+
+  // For DATA command
+  uint32 block_index = 5;
+  bytes  block_data  = 6;
+
+  // For STATUS response
+  STATE  state            = 7;
+  RESULT result           = 8;
+  uint32 total_blocks     = 9;
+  uint32 received_blocks  = 10;
+  repeated uint32 missing_blocks = 11; // Up to first 100 missing
+}

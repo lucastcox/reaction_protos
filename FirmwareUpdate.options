@@ -1,0 +1,3 @@
+FirmwareUpdate.sha256           max_size:32
+FirmwareUpdate.block_data        max_size:512
+FirmwareUpdate.missing_blocks    max_count:100
