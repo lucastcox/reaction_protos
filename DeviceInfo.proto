@@ -12,11 +12,11 @@ message DeviceInfo {
     Rev2 = 1;
   }
 
-   string      bootloaderVersion = 1;  //maaaaybe applicable for coprocessor?
+   string      bootloaderVersion = 1;
    string      firmwareVersion   = 2;  
-   string      idfVersion        = 3;  //not applicable for coprocessor
-   string      macAddress        = 4;  //not applicable for coprocessor
+   string      idfVersion        = 3;
+   string      macAddress        = 4;
    BOARD_REV   boardRevision     = 5;  
-   string      bankId            = 6;  //not applicable for coprocessor
+   string      bankId            = 6;
    DEVICE_TYPE deviceType        = 7;
 }

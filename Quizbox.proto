@@ -6,41 +6,37 @@ option csharp_namespace = "QuizboxUI.Protos";
 // package quizbox;
 enum Type {
   TIMER_EXPIRED     = 0;
-  QUIZZER_ACTION    = 1;
+  QUIZZER_ACTION     = 1;
   BUTTON_ACTION     = 2;
   TIMER_STARTED     = 3;
   TIMER_CLEARED     = 4;
-  QUIZZER_CLEARED   = 5;
-  QUIZZER_DISPLAYED = 6;
-  QUIZZER_ACTIVE    = 7;
+  QUIZZER_CLEARED    = 5;
+  QUIZZER_DISPLAYED  = 6;
+  QUIZZER_ACTIVE     = 7;
   TIMER_COUNTDOWN   = 8;
-  QUIZZERS_LIT_UP   = 9;
+  QUIZZERS_LIT_UP    = 9;
   PAIRING_ACTIVE    = 10;
   PAIRING_INACTIVE  = 11;
   END               = 12;
+  QUIZZER_ARBITRATION_EXPIRED = 13;
 }
 
 enum ButtonID {
-  RED_4         = 0;
-  RED_3         = 1;
-  RED_2         = 2;
-  RED_1         = 3;
-  GREEN_1       = 4;
-  GREEN_2       = 5;
-  GREEN_3       = 6;
-  GREEN_4       = 7;
-  TIMER_530     = 8;
-  TIMER_RESET   = 9;
-  QUIZZER_RESET = 10;
-  TIMER_60      = 11;
-  TIMER_120     = 12;
-  CONTEST       = 13;
-  ENDER         = 14;
+  TIMER_530    = 0;
+  TIMER_RESET  = 1;
+  QUIZZER_RESET = 2;
+  TIMER_60     = 3;
+  TIMER_120    = 4;
+  CONTEST      = 5;
+  ENDER        = 6;
 }
 
 message QuizzerEvent {
-  ButtonID quizzer_id = 1;
+  uint32 quizzer_id = 1;
   bool is_pressed = 2;
+  uint64 timestamp_us = 3;
+  bool timestamp_valid = 4;
+  bool timestamp_stale = 5;
 }
 
 message ButtonEvent {
@@ -54,7 +50,7 @@ message TimerEvent {
 
 message ActiveQuizzers {
   bool is_active = 1;
-  repeated ButtonID active_quizzers = 2;
+  repeated uint32 active_quizzers = 2;
 }
 
 message EventMessage {
@@ -65,7 +61,7 @@ message EventMessage {
     TimerEvent timer_event = 4;
     ActiveQuizzers active_quizzers = 6;
   }
-  uint64 timestamp_us = 5; // Milliseconds timestamp
+  uint64 timestamp_us = 5; // Microseconds timestamp
 }
 
 message QuizboxMessage {

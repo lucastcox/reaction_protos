@@ -44,6 +44,7 @@ message ConfigSnapshot {
   uint32 ble_stale_bond_quick_timeout_ms = 27;
   uint32 ble_stale_bond_strikes = 28;
   optional bool bleed_mode_enabled = 29;
+  uint32 quizzer_count = 30;
 }
 
 message ConfigPatch {
@@ -74,6 +75,7 @@ message ConfigPatch {
   optional uint32 ble_stale_bond_quick_timeout_ms = 37;
   optional uint32 ble_stale_bond_strikes = 38;
   optional bool bleed_mode_enabled = 39;
+  optional uint32 quizzer_count = 40;
 }
 
 message StoredDeviceConfig {
@@ -106,6 +108,7 @@ message StoredDeviceConfig {
   optional uint32 ble_stale_bond_quick_timeout_ms = 27;
   optional uint32 ble_stale_bond_strikes = 28;
   optional bool bleed_mode_enabled = 29;
+  optional uint32 quizzer_count = 30;
 }
 
 message ConfigMessage {
